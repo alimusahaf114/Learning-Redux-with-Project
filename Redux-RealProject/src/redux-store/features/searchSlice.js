@@ -4,7 +4,7 @@ const searchSlice = createSlice({
   initialState: {
     query: "",
     activeTab: "Photos",
-    results: [],
+    result: [],
     loading: false,
     error: null,
   },
@@ -16,8 +16,8 @@ const searchSlice = createSlice({
       state.activeTab = action.payload;
     },
     setResults(state, action) {
+      state.result = action.payload;
       state.loading = false;
-      state.results = action.payload;
     },
     setLoading(state, action) {
       state.loading = true;

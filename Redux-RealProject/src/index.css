@@ -1,1 +1,6 @@
 @import "tailwindcss";
+#botom{
+    background:  linear-gradient(transparent , black);
+    width: 100%;
+    padding: 10px;
+}
