@@ -27,6 +27,9 @@ const collectionSlice = createSlice({
         },
         addToast:()=>{
           toast("Added to collection!")
+        },
+        removeToast:()=>{
+          toast("Removed from collection!")
         }
     }
 
@@ -36,6 +39,7 @@ export const  {
   addCollection,
   removeCollection,
   clearCollection,
-  addToast
+  addToast,
+  removeToast
 } = collectionSlice.actions
 export default collectionSlice.reducer;
