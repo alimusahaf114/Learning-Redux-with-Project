@@ -1,29 +1,32 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { removeCollection, removeToast } from '../redux-store/features/collectionSlice';
-import Msg from './Msg';
-
-const CollectionCard = ({item}) => {
-     const { activeTab } = useSelector((store) => store.search);
-    const dispatch =  useDispatch()
-    const removeFromCollection = (item)=>{
-        dispatch(removeCollection(item.id))
-        dispatch(removeToast())
-    }
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  removeCollection,
+  removeToast,
+} from "../redux-store/features/collectionSlice";
+const CollectionCard = ({ item }) => {
+  const { activeTab } = useSelector((store) => store.search);
+  const dispatch = useDispatch();
+  const removeFromCollection = (item) => {
+    dispatch(removeCollection(item.id));
+    dispatch(removeToast());
+  };
+  return (
     <div className=" relative w-[23vw] text-black h-80 bg-white rounded-xl overflow-hidden">
       <a href={item.url} target="_blank">
-          <img
-            src={item.src}
-            alt={item.thumbnal || "image"}
-            className="w-full h-full object-cover"
-          />
-          <video
-            src={item.src} // depends on your API
-            autoPlay
-            loop
-            muted
-            className="w-full h-full object-cover"
-          />
+        {activeTab == "Photos" && <img
+          src={item.src}
+          alt={item.thumbnal || "image"}
+          className="w-full h-full object-cover"
+        />}</a>
+        <a href={item.url} target="_blank">
+        {activeTab == "Videos" && <video
+          src={item.src} 
+          autoPlay
+          loop
+          muted
+          className="w-full h-full object-cover"
+        />}
       </a>
       <div
         id="botom"
@@ -32,16 +35,15 @@ const CollectionCard = ({item}) => {
         <p className="  capitalize">{item.title}</p>
         <button
           onClick={() => {
-            removeFromCollection(item)
+            removeFromCollection(item);
           }}
-          className=" active:scale-95 bg-green-500 text-white rounded px-4 py-1 cursor-pointer"
+          className=" cursor-pointer active:scale-95 bg-green-500 text-white rounded px-4 py-1 cursor-pointer"
         >
           Remove
         </button>
       </div>
     </div>
-  
-  
-}
+  );
+};
 
 export default CollectionCard;
